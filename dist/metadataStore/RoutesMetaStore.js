@@ -14,7 +14,8 @@ class RoutesMetaStore {
         return this.metadataStore;
     }
     setMetadata(key, routesMetadata) {
-        this.metadataStore.set(key, routesMetadata);
+        const metadata = this.metadataStore.get(key) || [];
+        metadata.push(routesMetadata);
     }
 }
 exports.RoutesMetaStore = RoutesMetaStore;

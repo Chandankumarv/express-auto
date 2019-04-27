@@ -9,7 +9,7 @@ export class RoutesMetaStore {
 
   private static instance: RoutesMetaStore;
 
-  private metadataStore = new Map<string, RoutesMetadata>();
+  private metadataStore = new Map<string, RoutesMetadata[]>();
 
   static get Instance(): RoutesMetaStore {
     return this.instance ?
@@ -21,6 +21,7 @@ export class RoutesMetaStore {
   }
 
   setMetadata(key: string, routesMetadata: RoutesMetadata) {
-    this.metadataStore.set(key, routesMetadata);
+    const metadata = this.metadataStore.get(key) || [];
+    metadata.push(routesMetadata);
   }
 }
