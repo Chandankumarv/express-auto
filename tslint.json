@@ -13,7 +13,10 @@
       "ordered-imports": false,
       "object-literal-shorthand": false,
       "object-literal-sort-keys": false,
-      "prefer-const": false
+      "prefer-const": false,
+      "no-console":false,
+      "no-string-literal": false,
+      "member-ordering": false
   },
   "rulesDirectory": []
 }

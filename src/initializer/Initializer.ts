@@ -2,14 +2,16 @@ import { ExpressAutoApplicationConfig } from "../models/ExpressAutoApplicationCo
 import {Router as ExpressRouter} from "express";
 import { RoutesMetaStore } from "../metadataStore/RoutesMetaStore";
 import { RoutersMetaStore } from "../metadataStore/RoutersMetaStore";
+import { InitializerUtil } from "../utils/InitializerUtil";
 
 export class Initializer {
 
   public static initializeApplication(config: ExpressAutoApplicationConfig) {
-    Initializer.intializeRepositories();
-    Initializer.intializeServices();
-    Initializer.initializeRouters();
-    Initializer.injectDependencies();
+    // Initializer.intializeRepositories();
+    // Initializer.intializeServices();
+    // Initializer.initializeRouters();
+    // Initializer.injectDependencies();
+    InitializerUtil.startApplication(config.appConfig);
   }
 
   private static intializeRepositories() { }

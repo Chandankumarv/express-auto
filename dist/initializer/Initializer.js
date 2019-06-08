@@ -3,12 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const RoutesMetaStore_1 = require("../metadataStore/RoutesMetaStore");
 const RoutersMetaStore_1 = require("../metadataStore/RoutersMetaStore");
+const InitializerUtil_1 = require("../utils/InitializerUtil");
 class Initializer {
     static initializeApplication(config) {
-        Initializer.intializeRepositories();
-        Initializer.intializeServices();
-        Initializer.initializeRouters();
-        Initializer.injectDependencies();
+        // Initializer.intializeRepositories();
+        // Initializer.intializeServices();
+        // Initializer.initializeRouters();
+        // Initializer.injectDependencies();
+        InitializerUtil_1.InitializerUtil.startApplication(config.appConfig);
     }
     static intializeRepositories() { }
     static intializeServices() { }
