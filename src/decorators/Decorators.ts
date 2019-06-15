@@ -1,4 +1,3 @@
-import { FeatureModuleMetaStore } from "../metadataStore/FeatureModuleMetaStore";
 import { ApplicationInitializer } from "../initializer/ApplicationInitializer";
 import { ServicesMetaStore } from "../metadataStore/ServicesMetaStore";
 import { RepositoriesModuleMetaStore } from "../metadataStore/RepositoryMetaStore";
@@ -6,7 +5,8 @@ import { InjectionsMetaStore } from "../metadataStore/InjectionsMetaStore";
 import { ExpressAutoApplicationConfig } from "../models/ExpressAutoApplicationConfig";
 import { RoutesMetaStore } from "../metadataStore/RoutesMetaStore";
 import { RoutersMetaStore } from "../metadataStore/RoutersMetaStore";
-import { FeatureModuleConfig } from "../models/FeatureModuleConfig";
+import { ModuleConfig } from "../models/ModuleConfig";
+import { ModuleMetaStore } from "../metadataStore/ModuleMetaStore";
 
 export function ExpressAutoApplication(config: ExpressAutoApplicationConfig) {
   return (target: Function) => {
@@ -14,17 +14,18 @@ export function ExpressAutoApplication(config: ExpressAutoApplicationConfig) {
   };
 }
 
-export function FeatureModule(config: FeatureModuleConfig) {
+export function Module(config: ModuleConfig) {
   return (target: Function) => {
-    FeatureModuleMetaStore.Instance.setMetadata(target.name, {
-      target: target
+    ModuleMetaStore.Instance.setMetadata(target.name, {
+      target: target,
+      config: config
     });
   };
 }
 
 export function Router(path?: string) {
   return (target: Function) => {
-    RoutersMetaStore.Instance.setMetadata(target.name, {
+    RoutersMetaStore.getInstance.setMetadata(target.name, {
       target: target,
       path: path
     });

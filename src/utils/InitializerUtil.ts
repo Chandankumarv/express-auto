@@ -24,7 +24,7 @@ export class InitializerUtil {
 
   public static async stopServer(): Promise<boolean> {
     return new Promise((resolve: any, reject: any) => {
-      if (this.server.address()) {
+      if (this.server && this.server.address()) {
         this.server.close((error: Error) => {
           if (error) {
             reject(error);

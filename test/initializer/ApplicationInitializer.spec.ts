@@ -7,7 +7,7 @@ import ApplicationConfigJson from "../application.config.json";
 import { AddressInfo } from "net";
 import { InitializerUtil } from "../../src/utils/InitializerUtil";
 
-describe("@Initializer Test -> ", async () => {
+describe("@ApplicationInitializer Test -> ", async () => {
   it("should start the application with the port fetched from config file", async () => {
     expect(true).to.be.equal(true);
     let expressApplicationConfig: ExpressAutoApplicationConfig = new ExpressAutoApplicationConfig();

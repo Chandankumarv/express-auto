@@ -1,0 +1,10 @@
+{
+  "ModuleMetadataNotFound": {
+    "name": "ModuleMetadataNotFound",
+    "message": "Imported Module metadata not found during module intialization"
+  },
+  "RouterMetadataNotFound": {
+    "name": "RouterMetadataNotFound",
+    "message": "Imported Router metadata not found during router intialization"
+  }
+}

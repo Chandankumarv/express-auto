@@ -2,6 +2,8 @@ import {Router as ExpressRouter} from "express";
 import { RoutesMetaStore } from "../metadataStore/RoutesMetaStore";
 import { RoutersMetaStore } from "../metadataStore/RoutersMetaStore";
 import { IInitializer } from "./Initializer";
+import { ModuleConfig } from "../models/ModuleConfig";
+import Errors from "../config/errors.json";
 
 export class RouterInitializer implements IInitializer {
 
@@ -11,17 +13,27 @@ export class RouterInitializer implements IInitializer {
     return this.instance ? this.instance : new RouterInitializer();
   }
 
-  public initialize() {
+  public initialize(moduleConfig: ModuleConfig): ExpressRouter {
     let router: ExpressRouter = ExpressRouter();
-    RoutersMetaStore.Instance.metadata.forEach((value: any, key: string) => {
-      let path = (value.path || value.path === "") ? value.path : "/";
-      router.use(path, this.intializeRoutes(key));
+    moduleConfig.routers.forEach((routerClass: Function) => {
+      let routerMetadata = RoutersMetaStore.getInstance.getMetaDataItem(routerClass.name);
+      if (routerMetadata) {
+        let path = (routerMetadata.path || routerMetadata.path === "") ? routerMetadata.path : "/";
+        let childRoutes = this.intializeRoutes(routerClass.name);
+        router.use(path, childRoutes);
+      } else {
+        let error = new Error();
+        error.name = Errors.RouterMetadataNotFound.name;
+        error.message = Errors.RouterMetadataNotFound.message;
+        throw error;
+      }
     });
+    return router;
   }
 
   private intializeRoutes(key: string): ExpressRouter {
     let router: ExpressRouter = ExpressRouter();
-    let parentRoute = RoutesMetaStore.Instance.metadata.get(key);
+    let parentRoute = RoutesMetaStore.Instance.getMetaDataItem(key);
     if (parentRoute) {
       parentRoute.forEach((value: any, index: number) => {
         let method = value.method ? value.method : "get";
@@ -43,8 +55,6 @@ export class RouterInitializer implements IInitializer {
             router.get(path, value.handler);
         }
       });
-    } else {
-      throw new Error("Router not registered: " + key);
     }
     return router;
   }

@@ -11,8 +11,8 @@ export class InjectionsMetaStore {
   private metadataStore = new Map<string, InjectionsMetadata[]>();
 
   static get Instance(): InjectionsMetaStore {
-    return this.instance ?
-    this.instance : new InjectionsMetaStore();
+    this.instance = this.instance ? this.instance : new InjectionsMetaStore();
+    return this.instance;
   }
 
   get metadata() {
