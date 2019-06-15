@@ -1,3 +1,4 @@
--r ts-node/register "./test/**/*.spec.ts"
+-r ts-node/register 
+--recursive "./test/**/*.spec.ts"
 --ui bdd
 --exit

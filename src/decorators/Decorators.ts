@@ -1,5 +1,5 @@
 import { FeatureModuleMetaStore } from "../metadataStore/FeatureModuleMetaStore";
-import { Initializer } from "../initializer/Initializer";
+import { ApplicationInitializer } from "../initializer/ApplicationInitializer";
 import { ServicesMetaStore } from "../metadataStore/ServicesMetaStore";
 import { RepositoriesModuleMetaStore } from "../metadataStore/RepositoryMetaStore";
 import { InjectionsMetaStore } from "../metadataStore/InjectionsMetaStore";
@@ -10,7 +10,7 @@ import { FeatureModuleConfig } from "../models/FeatureModuleConfig";
 
 export function ExpressAutoApplication(config: ExpressAutoApplicationConfig) {
   return (target: Function) => {
-    Initializer.initializeApplication(config);
+    ApplicationInitializer.getInstance.initialize(config);
   };
 }
 
