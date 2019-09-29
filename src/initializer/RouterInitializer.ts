@@ -1,9 +1,11 @@
-import {Router as ExpressRouter} from "express";
+import {Router} from "express";
 import { RoutesMetaStore } from "../metadataStore/RoutesMetaStore";
 import { RoutersMetaStore } from "../metadataStore/RoutersMetaStore";
 import { IInitializer } from "./Initializer";
 import { ModuleConfig } from "../models/ModuleConfig";
 import Errors from "../config/errors.json";
+import { HttpMethod } from "../enums/HttpMethod";
+import { GlobalContext } from "../common/GlobalContext";
 
 export class RouterInitializer implements IInitializer {
 
@@ -13,46 +15,48 @@ export class RouterInitializer implements IInitializer {
     return this.instance ? this.instance : new RouterInitializer();
   }
 
-  public initialize(moduleConfig: ModuleConfig): ExpressRouter {
-    let router: ExpressRouter = ExpressRouter();
+  public initialize(moduleConfig: ModuleConfig): Router {
+    let application = GlobalContext.getInstance.application;
     moduleConfig.routers.forEach((routerClass: Function) => {
       let routerMetadata = RoutersMetaStore.getInstance.getMetaDataItem(routerClass.name);
       if (routerMetadata) {
         let path = (routerMetadata.path || routerMetadata.path === "") ? routerMetadata.path : "/";
         let childRoutes = this.intializeRoutes(routerClass.name);
-        router.use(path, childRoutes);
+        application.use(path, childRoutes);
       } else {
         let error = new Error();
-        error.name = Errors.RouterMetadataNotFound.name;
-        error.message = Errors.RouterMetadataNotFound.message;
+        error.name = Errors.ROUTER_METADATA_NOT_FOUND.name;
+        error.message = Errors.ROUTER_METADATA_NOT_FOUND.message;
         throw error;
       }
     });
-    return router;
+    return application;
   }
 
-  private intializeRoutes(key: string): ExpressRouter {
-    let router: ExpressRouter = ExpressRouter();
+  private intializeRoutes(key: string): Router {
+    let router: Router = Router();
     let parentRoute = RoutesMetaStore.Instance.getMetaDataItem(key);
     if (parentRoute) {
       parentRoute.forEach((value: any, index: number) => {
-        let method = value.method ? value.method : "get";
         let path = (value.path || value.path === "") ? value.path : "/";
-        switch (method) {
-          case "get":
+        switch (value.method) {
+          case HttpMethod.GET:
             router.get(path, value.handler);
             break;
-          case "post":
+          case HttpMethod.POST:
             router.post(path, value.handler);
             break;
-          case "put":
+          case HttpMethod.PUT:
             router.put(path, value.handler);
             break;
-          case "delete":
+          case HttpMethod.DELETE:
             router.delete(path, value.handler);
             break;
           default:
-            router.get(path, value.handler);
+            let error = new Error();
+            error.name = Errors.UNRECOGNIZED_HTTP_METHOD.name;
+            error.message = Errors.UNRECOGNIZED_HTTP_METHOD.message;
+            throw error;
         }
       });
     }

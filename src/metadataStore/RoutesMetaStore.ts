@@ -1,8 +1,10 @@
+import { HttpMethod } from "../enums/HttpMethod";
+
 class RoutesMetadata {
-  target: Function;
-  method?: string;
+  target: Object;
+  method?: HttpMethod;
   path?: string;
-  handler: any;
+  handler: Function;
 }
 
 export class RoutesMetaStore {
@@ -23,6 +25,7 @@ export class RoutesMetaStore {
   setMetadata(key: string, routesMetadata: RoutesMetadata) {
     const metadata = this.metadataStore.get(key) || [];
     metadata.push(routesMetadata);
+    this.metadataStore.set(key, metadata);
   }
 
   getMetaDataItem(key: string): RoutesMetadata[] {

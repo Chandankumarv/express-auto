@@ -1,10 +1,14 @@
 {
-  "ModuleMetadataNotFound": {
-    "name": "ModuleMetadataNotFound",
+  "MODULE_METADATA_NOT_FOUND": {
+    "name": "MODULE_METADATA_NOT_FOUND",
     "message": "Imported Module metadata not found during module intialization"
   },
-  "RouterMetadataNotFound": {
-    "name": "RouterMetadataNotFound",
+  "ROUTER_METADATA_NOT_FOUND": {
+    "name": "ROUTER_METADATA_NOT_FOUND",
     "message": "Imported Router metadata not found during router intialization"
+  },
+  "UNRECOGNIZED_HTTP_METHOD": {
+    "name": "UNRECOGNIZED_HTTP_METHOD",
+    "message": "Could not recognize Http method"
   }
 }

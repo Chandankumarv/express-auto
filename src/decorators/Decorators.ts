@@ -7,6 +7,8 @@ import { RoutesMetaStore } from "../metadataStore/RoutesMetaStore";
 import { RoutersMetaStore } from "../metadataStore/RoutersMetaStore";
 import { ModuleConfig } from "../models/ModuleConfig";
 import { ModuleMetaStore } from "../metadataStore/ModuleMetaStore";
+import { HttpMethod } from "../enums/HttpMethod";
+import { RouteType } from "../types/Route.type";
 
 export function ExpressAutoApplication(config: ExpressAutoApplicationConfig) {
   return (target: Function) => {
@@ -47,15 +49,14 @@ export function Repository(resolver?: string) {
     });
   };
 }
-
-export function Route(method?: string, path?: string) {
-  return <T>(target: Function, propertyKey: string | symbol,
-             propertyDescriptor: TypedPropertyDescriptor<T>): TypedPropertyDescriptor<T> => {
-    RoutesMetaStore.Instance.setMetadata(target.name, {
+export function Route(method: HttpMethod, path?: string) {
+  return (target: Object, propertyKey: string | symbol,
+          propertyDescriptor: TypedPropertyDescriptor<RouteType>): TypedPropertyDescriptor<RouteType> => {
+    RoutesMetaStore.Instance.setMetadata(target.constructor.name, {
       target: target,
       method: method,
       path: path,
-      handler: propertyDescriptor
+      handler: propertyDescriptor.value
     });
     return propertyDescriptor;
   };

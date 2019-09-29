@@ -17,14 +17,14 @@ export class ModuleInitializer implements IInitializer {
       importedModuleList.forEach((module: Function) => {
         let moduleMetaData = ModuleMetaStore.Instance.getMetaDataItem(module.name);
         if (moduleMetaData) {
-          let moduleConfig: ModuleConfig;
+          let moduleConfig: ModuleConfig = moduleMetaData.config;
           // RepositoryInitializer.intializeRepositories();
           // ServiceInitializer.intializeServices();
           RouterInitializer.getInstance.initialize(moduleConfig);
         } else {
           let error: Error = new Error();
-          error.name = Errors.ModuleMetadataNotFound.name;
-          error.message = Errors.ModuleMetadataNotFound.message;
+          error.name = Errors.MODULE_METADATA_NOT_FOUND.name;
+          error.message = Errors.MODULE_METADATA_NOT_FOUND.message;
           throw error;
         }
       });

@@ -7,8 +7,8 @@ class InjectionsMetaStore {
         this.metadataStore = new Map();
     }
     static get Instance() {
-        return this.instance ?
-            this.instance : new InjectionsMetaStore();
+        this.instance = this.instance ? this.instance : new InjectionsMetaStore();
+        return this.instance;
     }
     get metadata() {
         return this.metadataStore;

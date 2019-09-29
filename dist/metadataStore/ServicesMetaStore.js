@@ -7,8 +7,8 @@ class ServicesMetaStore {
         this.metadataStore = new Map();
     }
     static get Instance() {
-        return this.instance ?
-            this.instance : new ServicesMetaStore();
+        this.instance = this.instance ? this.instance : new ServicesMetaStore();
+        return this.instance;
     }
     get metadata() {
         return this.metadataStore;
