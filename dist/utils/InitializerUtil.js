@@ -8,11 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const GlobalStore_1 = require("../common/GlobalStore");
+const GlobalContext_1 = require("../common/GlobalContext");
 class InitializerUtil {
     static startApplication(appConfig) {
-        let app = GlobalStore_1.GlobalStore.getInstance.application;
+        let app = GlobalContext_1.GlobalContext.getInstance.application;
         this.server = this.startServer(appConfig.port, app);
+        console.log(`Server listening on  ${appConfig.port}`);
         return this.server;
     }
     static startServer(port, app) {
@@ -26,7 +27,7 @@ class InitializerUtil {
     static stopServer() {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                if (this.server.address()) {
+                if (this.server && this.server.address()) {
                     this.server.close((error) => {
                         if (error) {
                             reject(error);

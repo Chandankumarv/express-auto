@@ -9,8 +9,8 @@ export class ServicesMetaStore {
   private metadataStore = new Map<string, ServicesMetadata>();
 
   static get Instance(): ServicesMetaStore {
-    return this.instance ?
-    this.instance : new ServicesMetaStore();
+    this.instance = this.instance ? this.instance : new ServicesMetaStore();
+    return this.instance;
   }
 
   get metadata() {

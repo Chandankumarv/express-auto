@@ -7,8 +7,8 @@ class RoutesMetaStore {
         this.metadataStore = new Map();
     }
     static get Instance() {
-        return this.instance ?
-            this.instance : new RoutesMetaStore();
+        this.instance = this.instance ? this.instance : new RoutesMetaStore();
+        return this.instance;
     }
     get metadata() {
         return this.metadataStore;
@@ -16,6 +16,10 @@ class RoutesMetaStore {
     setMetadata(key, routesMetadata) {
         const metadata = this.metadataStore.get(key) || [];
         metadata.push(routesMetadata);
+        this.metadataStore.set(key, metadata);
+    }
+    getMetaDataItem(key) {
+        return this.metadataStore.get(key) || [];
     }
 }
 exports.RoutesMetaStore = RoutesMetaStore;

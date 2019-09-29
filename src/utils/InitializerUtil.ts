@@ -1,20 +1,21 @@
 import express from "express";
-import { GlobalStore } from "../common/GlobalStore";
+import {Application, Errback} from "express";
+import { GlobalContext } from "../common/GlobalContext";
 import { ApplicationConfig } from "../models/ApplicationConfig.model";
-import http from "http";
-import { AddressInfo } from "net";
+import {Server} from "http";
 
 export class InitializerUtil {
-  private static server: http.Server;
+  private static server: Server;
 
-  public static startApplication(appConfig: ApplicationConfig): http.Server {
-    let app: express.Application = GlobalStore.getInstance.application;
+  public static startApplication(appConfig: ApplicationConfig): Server {
+    let app: Application = GlobalContext.getInstance.application;
     this.server = this.startServer(appConfig.port, app);
+    console.log(`Server listening on  ${appConfig.port}`);
     return this.server;
   }
 
-  private static startServer(port: number, app: express.Application): http.Server {
-    let server = app.listen(port, (error: express.Errback) => {
+  private static startServer(port: number, app: Application): Server {
+    let server = app.listen(port, (error: Errback) => {
       if (error) {
         throw error;
       }
@@ -24,7 +25,7 @@ export class InitializerUtil {
 
   public static async stopServer(): Promise<boolean> {
     return new Promise((resolve: any, reject: any) => {
-      if (this.server.address()) {
+      if (this.server && this.server.address()) {
         this.server.close((error: Error) => {
           if (error) {
             reject(error);

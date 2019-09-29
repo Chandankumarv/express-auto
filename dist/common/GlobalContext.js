@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-class GlobalStore {
+class GlobalContext {
     static get getInstance() {
-        if (GlobalStore.instance == null) {
-            GlobalStore.instance = new GlobalStore();
+        if (GlobalContext.instance == null) {
+            GlobalContext.instance = new GlobalContext();
         }
-        return GlobalStore.instance;
+        return GlobalContext.instance;
     }
     get application() {
         if (this.app == null) {
@@ -18,5 +18,5 @@ class GlobalStore {
         return this.app;
     }
 }
-exports.GlobalStore = GlobalStore;
-//# sourceMappingURL=GlobalStore.js.map
+exports.GlobalContext = GlobalContext;
+//# sourceMappingURL=GlobalContext.js.map

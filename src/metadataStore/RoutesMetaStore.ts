@@ -1,8 +1,10 @@
+import { HttpMethod } from "../enums/HttpMethod";
+
 class RoutesMetadata {
-  target: Function;
-  method?: string;
+  target: Object;
+  method?: HttpMethod;
   path?: string;
-  handler: any;
+  handler: Function;
 }
 
 export class RoutesMetaStore {
@@ -12,8 +14,8 @@ export class RoutesMetaStore {
   private metadataStore = new Map<string, RoutesMetadata[]>();
 
   static get Instance(): RoutesMetaStore {
-    return this.instance ?
-    this.instance : new RoutesMetaStore();
+    this.instance = this.instance ? this.instance : new RoutesMetaStore();
+    return this.instance;
   }
 
   get metadata() {
@@ -23,5 +25,10 @@ export class RoutesMetaStore {
   setMetadata(key: string, routesMetadata: RoutesMetadata) {
     const metadata = this.metadataStore.get(key) || [];
     metadata.push(routesMetadata);
+    this.metadataStore.set(key, metadata);
+  }
+
+  getMetaDataItem(key: string): RoutesMetadata[] {
+    return this.metadataStore.get(key) || [];
   }
 }

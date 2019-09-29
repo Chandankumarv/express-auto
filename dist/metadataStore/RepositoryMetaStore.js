@@ -7,8 +7,8 @@ class RepositoriesModuleMetaStore {
         this.metadataStore = new Map();
     }
     static get Instance() {
-        return this.instance ?
-            this.instance : new RepositoriesModuleMetaStore();
+        this.instance = this.instance ? this.instance : new RepositoriesModuleMetaStore();
+        return this.instance;
     }
     get metadata() {
         return this.metadataStore;

@@ -7,6 +7,7 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json",
     "build": "rm -rf dist && tsc",
+    "pretest": "tslint -c tslint.json -p tsconfig.json",
     "test": "node node_modules/mocha/bin/_mocha"
   },
   "repository": {
@@ -24,7 +25,7 @@
   "homepage": "https://github.com/chandan-kumarv/express-auto#readme",
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/express": "^4.16.1",
+    "@types/express": "^4.17.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^11.13.8",
     "chai": "^4.2.0",
@@ -34,6 +35,6 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.1"
   }
 }

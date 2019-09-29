@@ -9,9 +9,9 @@ export class RoutersMetaStore {
 
   private metadataStore = new Map<string, RoutersMetadata>();
 
-  static get Instance(): RoutersMetaStore {
-    return this.instance ?
-    this.instance : new RoutersMetaStore();
+  static get getInstance(): RoutersMetaStore {
+    this.instance = this.instance ? this.instance : new RoutersMetaStore();
+    return this.instance;
   }
 
   get metadata() {
@@ -20,5 +20,9 @@ export class RoutersMetaStore {
 
   setMetadata(key: string, routersMetadata: RoutersMetadata) {
     this.metadataStore.set(key, routersMetadata);
+  }
+
+  getMetaDataItem(key: string): RoutersMetadata {
+    return this.metadataStore.get(key);
   }
 }

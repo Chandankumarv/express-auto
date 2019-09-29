@@ -5,8 +5,9 @@ declare class RoutersMetadata {
 export declare class RoutersMetaStore {
     private static instance;
     private metadataStore;
-    static readonly Instance: RoutersMetaStore;
+    static readonly getInstance: RoutersMetaStore;
     readonly metadata: Map<string, RoutersMetadata>;
     setMetadata(key: string, routersMetadata: RoutersMetadata): void;
+    getMetaDataItem(key: string): RoutersMetadata;
 }
 export {};
