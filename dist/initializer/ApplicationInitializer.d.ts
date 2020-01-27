@@ -1,7 +1,7 @@
 /// <reference types="node" />
 import { ExpressAutoApplicationConfig } from "../models/ExpressAutoApplicationConfig";
 import { Server } from "http";
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 export declare class ApplicationInitializer implements IInitializer {
     private static instance;
     static readonly getInstance: ApplicationInitializer;

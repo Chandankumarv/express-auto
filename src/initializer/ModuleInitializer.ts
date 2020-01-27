@@ -1,4 +1,4 @@
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 import { RouterInitializer } from "./RouterInitializer";
 import { ModuleMetaStore } from "../metadataStore/ModuleMetaStore";
 import { ModuleConfig } from "../models/ModuleConfig";

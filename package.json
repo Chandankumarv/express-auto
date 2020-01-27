@@ -6,7 +6,7 @@
   "types": "dist/Index.d.ts",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json",
-    "build": "rm -rf dist && tsc",
+    "build": "tsc",
     "pretest": "tslint -c tslint.json -p tsconfig.json",
     "test": "node node_modules/mocha/bin/_mocha"
   },

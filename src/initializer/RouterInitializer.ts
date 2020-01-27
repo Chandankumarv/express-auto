@@ -1,7 +1,7 @@
 import {Router} from "express";
 import { RoutesMetaStore } from "../metadataStore/RoutesMetaStore";
 import { RoutersMetaStore } from "../metadataStore/RoutersMetaStore";
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 import { ModuleConfig } from "../models/ModuleConfig";
 import Errors from "../config/errors.json";
 import { HttpMethod } from "../enums/HttpMethod";

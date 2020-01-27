@@ -1,4 +1,4 @@
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 
 export class ServiceInitializer implements IInitializer {
 

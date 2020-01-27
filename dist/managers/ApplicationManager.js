@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const GlobalContext_1 = require("../common/GlobalContext");
-class InitializerUtil {
+class ApplicationManager {
     static startApplication(appConfig) {
         let app = GlobalContext_1.GlobalContext.getInstance.application;
         this.server = this.startServer(appConfig.port, app);
@@ -42,5 +42,5 @@ class InitializerUtil {
         });
     }
 }
-exports.InitializerUtil = InitializerUtil;
-//# sourceMappingURL=InitializerUtil.js.map
+exports.ApplicationManager = ApplicationManager;
+//# sourceMappingURL=ApplicationManager.js.map

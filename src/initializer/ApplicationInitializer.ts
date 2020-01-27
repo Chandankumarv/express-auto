@@ -1,7 +1,7 @@
 import { ExpressAutoApplicationConfig } from "../models/ExpressAutoApplicationConfig";
-import { InitializerUtil } from "../utils/InitializerUtil";
+import { ApplicationManager } from "../managers/ApplicationManager";
 import {Server} from "http";
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 import { ModuleInitializer } from "./ModuleInitializer";
 
 export class ApplicationInitializer implements IInitializer {
@@ -15,7 +15,7 @@ export class ApplicationInitializer implements IInitializer {
   public initialize(config: ExpressAutoApplicationConfig): Server {
     ModuleInitializer.getInstance.initialize(config.moduleImports);
     // this.injectDependencies();
-    return InitializerUtil.startApplication(config.appConfig);
+    return ApplicationManager.startApplication(config.appConfig);
   }
 
   private static injectDependencies() {

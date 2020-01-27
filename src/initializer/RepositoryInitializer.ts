@@ -1,4 +1,4 @@
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 
 export class RepositoryInitializer implements IInitializer {
 

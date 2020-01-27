@@ -4,7 +4,7 @@ import { GlobalContext } from "../common/GlobalContext";
 import { ApplicationConfig } from "../models/ApplicationConfig.model";
 import {Server} from "http";
 
-export class InitializerUtil {
+export class ApplicationManager {
   private static server: Server;
 
   public static startApplication(appConfig: ApplicationConfig): Server {

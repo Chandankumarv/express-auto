@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { IInitializer } from "./Initializer";
+import { IInitializer } from "./IInitializer";
 import { ModuleConfig } from "../models/ModuleConfig";
 export declare class RouterInitializer implements IInitializer {
     private static instance;
