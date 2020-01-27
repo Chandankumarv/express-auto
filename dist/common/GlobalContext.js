@@ -19,4 +19,3 @@ class GlobalContext {
     }
 }
 exports.GlobalContext = GlobalContext;
-//# sourceMappingURL=GlobalContext.js.map

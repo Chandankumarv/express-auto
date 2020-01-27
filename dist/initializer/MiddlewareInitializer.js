@@ -9,4 +9,3 @@ class MiddlewareInitializer {
     }
 }
 exports.MiddlewareInitializer = MiddlewareInitializer;
-//# sourceMappingURL=MiddlewareInitializer.js.map

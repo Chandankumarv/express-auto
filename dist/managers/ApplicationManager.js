@@ -43,4 +43,3 @@ class ApplicationManager {
     }
 }
 exports.ApplicationManager = ApplicationManager;
-//# sourceMappingURL=ApplicationManager.js.map

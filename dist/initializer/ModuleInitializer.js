@@ -31,4 +31,3 @@ class ModuleInitializer {
     }
 }
 exports.ModuleInitializer = ModuleInitializer;
-//# sourceMappingURL=ModuleInitializer.js.map

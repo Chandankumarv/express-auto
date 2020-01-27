@@ -9,4 +9,3 @@ class ServiceInitializer {
     }
 }
 exports.ServiceInitializer = ServiceInitializer;
-//# sourceMappingURL=ServiceInitializer.js.map

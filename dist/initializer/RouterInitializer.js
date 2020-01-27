@@ -62,4 +62,3 @@ class RouterInitializer {
     }
 }
 exports.RouterInitializer = RouterInitializer;
-//# sourceMappingURL=RouterInitializer.js.map

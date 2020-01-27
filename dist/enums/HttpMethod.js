@@ -7,4 +7,3 @@ var HttpMethod;
     HttpMethod["PUT"] = "put";
     HttpMethod["DELETE"] = "delete";
 })(HttpMethod = exports.HttpMethod || (exports.HttpMethod = {}));
-//# sourceMappingURL=HttpMethod.js.map

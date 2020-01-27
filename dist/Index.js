@@ -12,4 +12,3 @@ var GlobalContext_1 = require("./common/GlobalContext");
 exports.GlobalContext = GlobalContext_1.GlobalContext;
 var HttpMethod_1 = require("./enums/HttpMethod");
 exports.HttpMethod = HttpMethod_1.HttpMethod;
-//# sourceMappingURL=Index.js.map

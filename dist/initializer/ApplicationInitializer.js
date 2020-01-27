@@ -16,4 +16,3 @@ class ApplicationInitializer {
     }
 }
 exports.ApplicationInitializer = ApplicationInitializer;
-//# sourceMappingURL=ApplicationInitializer.js.map

@@ -9,4 +9,3 @@ class ConfigurationInitializer {
     }
 }
 exports.ConfigurationInitializer = ConfigurationInitializer;
-//# sourceMappingURL=ConfigurationInitializer.js.map

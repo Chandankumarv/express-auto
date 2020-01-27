@@ -18,4 +18,3 @@ class RepositoriesModuleMetaStore {
     }
 }
 exports.RepositoriesModuleMetaStore = RepositoriesModuleMetaStore;
-//# sourceMappingURL=RepositoryMetaStore.js.map
